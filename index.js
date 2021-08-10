@@ -1,13 +1,13 @@
-const express = require('express')
+import express, { json, urlencoded } from 'express';
 //const bodyParser = require('body-parser')
-const { request } = require('express')
-const {WebhookClient} = require('dialogflow-fulfillment');
+import { request } from 'express';
+import { WebhookClient } from 'dialogflow-fulfillment';
 
 const app = express()
 //app.use(bodyParser.json())
 const port = process.env.PORT || 3000
-app.use(express.json())
-app.use(express.urlencoded({ extended: true}))
+app.use(json())
+app.use(urlencoded({ extended: true}))
 
 app.post('/dialogflow-fullfillment', (request, response)=>{
     dialogflowFullfillment(request, response)
